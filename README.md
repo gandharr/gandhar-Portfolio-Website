@@ -2,7 +2,7 @@
 Welcome to my portfolio! This project showcases my skills, projects, and experiences.
 
 ### Weblink
-The live site link will be added after deployment.
+https://gandharr.github.io/gandhar-Portfolio-Website/
 
 ## Screenshots
 Screenshots will be added after deployment.
