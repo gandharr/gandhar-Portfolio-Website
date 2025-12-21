@@ -5,7 +5,8 @@ Welcome to my portfolio! This project showcases my skills, projects, and experie
 https://gandharr.github.io/gandhar-Portfolio-Website/
 
 ## Screenshots
-Screenshots will be added after deployment.
+<img width="1918" height="898" alt="image" src="https://github.com/user-attachments/assets/fa3feb71-8767-48a2-8ce9-ff0c43e6374a" />
+
 
 
 ## Table of Contents
