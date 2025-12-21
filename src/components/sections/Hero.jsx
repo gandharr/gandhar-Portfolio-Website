@@ -183,6 +183,8 @@ const Img = styled.img`
   height: 100%;
   max-width: 520px;
   max-height: 520px;
+  object-fit: cover;
+  object-position: center;
   border: 2px solid ${({ theme }) => theme.primary};
 
   @media (max-width: 640px) {
@@ -256,7 +258,15 @@ const Hero = () => {
             <HeroRightContainer>
               <motion.div {...headContentAnimation}>
                 <Tilt>
-                  <Img src={HeroImg} alt={Bio.name} />
+                  <Img
+                    src={HeroImg}
+                    alt={Bio.name}
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                    width={520}
+                    height={520}
+                  />
                 </Tilt>
               </motion.div>
             </HeroRightContainer>

@@ -18,10 +18,7 @@ export const Bio = {
   resume:
     "https://drive.google.com/drive/folders/1dZUE_iUvd0l7qlfHKkFnIGlzIpqxBijy?usp=sharing",
   linkedin: "https://www.linkedin.com/in/gandhar-dhore/",
-  email: "dhore956@gmail.com",
-  twitter: "https://twitter.com/gandharr",
-  facebook: "https://www.facebook.com/",
-  insta: "https://www.instagram.com/",
+  email: "dhore956@gmail.com"
 };
 
 export const skills = [
