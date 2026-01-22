@@ -4,6 +4,11 @@ import HyprDevsLogo from "../images/HyprDevs.jpeg";
 import BluestockLogo from "../images/Bluestock.jpeg";
 import StellarVaultLogo from "../images/stellar-vault-logo.png";
 import GitamAttendanceLogo from "../images/gitam-logo.png";
+import FlutterIcon from "../images/Flutter.png";
+import FlutterFlowIcon from "../images/FlutterFlow.png";
+import DreamflowIcon from "../images/Dreamflow.jpeg";
+import HeroImage from "../images/HeroImage.jpg";
+import OasisLogo from "../images/Oasis Infobyte.jpg";
 
 export const Bio = {
   name: "Gandhar Vijay Dhore",
@@ -156,7 +161,18 @@ export const skills = [
         image:
           "https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg",
       },
-      
+      {
+        name: "Flutter",
+        image: FlutterIcon,
+      },
+      {
+        name: "FlutterFlow",
+        image: FlutterFlowIcon,
+      },
+      {
+        name: "DreamFlow",
+        image: DreamflowIcon,
+      },
     ],
   },
 ];
@@ -181,6 +197,16 @@ export const experiences = [
     desc:
       "Developed high-performance RESTful services for trading functions using Node.js/Express and PostgreSQL. Integrated REST APIs with the frontend to reduce page loading time. Implemented accessibility standards and responsive components, increasing successful user flow completion.",
     skills: ["Node.js", "Express", "PostgreSQL", "REST APIs", "Accessibility", "Responsive UI", "React"],
+  },
+  {
+    id: 2,
+    img: OasisLogo,
+    role: "Web Developer and Designer Intern",
+    company: "Oasis Infobyte – Remote",
+    date: "December 2025 – January 2026",
+    desc:
+      "Designed and developed a modern, fully responsive 3D portfolio website to showcase professional work, skills, and achievements. Implemented interactive animations, smooth scrolling, and dynamic components using React.js and Three.js for enhanced user engagement. Integrated email functionality, project showcases, and professional sections including education, experience, and skills with a polished, production-ready design.",
+    skills: ["React", "Three.js", "Framer Motion", "Tailwind CSS", "UI/UX Design", "JavaScript", "Responsive Design"],
   },
 ];
 
@@ -229,6 +255,17 @@ export const projects = [
     category: "web app",
     github: "https://github.com/gandharr/GITAM-Attendance-Calculator",
     webapp: "https://gitamattendance.vercel.app/",
+  },
+  {
+    id: 2,
+    title: "3D Portfolio Website",
+    date: "Dec 2025 – Jan 2026",
+    description:
+      "Created an interactive 3D portfolio website showcasing professional work, skills, and achievements. Integrated smooth animations, dynamic components, and responsive design with Three.js for immersive 3D visuals. Built with modern web technologies to deliver a polished, production-ready portfolio with email integration and project showcases.",
+    image: HeroImage,
+    tags: ["React", "Three.js", "Framer Motion", "Styled Components", "JavaScript"],
+    category: "web app",
+    github: "https://github.com/gandharr/GandharVijayDhore.github.io",
   },
 ];
 

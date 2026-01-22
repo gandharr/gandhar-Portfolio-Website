@@ -1,7 +1,7 @@
 {
   "name": "3d-portfolio-website",
   "version": "0.1.1",
-  "homepage": "https://gandharr.github.io",
+  "homepage": "https://gandharr.github.io/gandhar-Portfolio-Website",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^4.1.0",
@@ -38,7 +38,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -b main -r https://github.com/gandharr/gandharr.github.io.git --add"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
