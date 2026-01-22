@@ -29,17 +29,22 @@ My Portfolio is a React.js application that serves as an online portfolio to sho
 ## Features
 - About Me: An overview of my background, skills, and experiences.
 - Projects: A collection of my notable projects with descriptions, screenshots, and links.
-- Skills: A list of my technical skills and proficiencies.
+- Skills: A comprehensive list of technical skills including Flutter, FlutterFlow, and DreamFlow.
+- Experience: Detailed information about internships including UI/UX Design at HyprDevs, SDE at Bluestock Fintech, and Web Developer & Designer at Oasis Infobyte.
 - Resume: A link to download my resume.
-- Contact: A form to send me messages or inquiries.
+- Contact: An interactive form powered by EmailJS to send me messages directly to dhore956@gmail.com.
+- Responsive Design: Fully optimized for all devices and screen sizes.
 
 ## Technologies Used
-- React.js: A JavaScript library for building user interfaces.
-- HTML5 & CSS3: Markup and styling languages for building web pages.
-- JavaScript: A programming language for adding interactivity to web applications.
-- Style-Components: A CSS framework for creating responsive and mobile-first designs.
-- Git: A version control system for tracking changes and collaborating on projects.
-- GitHub Pages: A platform for hosting and deploying web applications.
+- **Frontend:** React.js, Three.js (3D animations), Framer Motion (animations)
+- **Styling:** Styled-Components, CSS3, Tailwind CSS
+- **Email Service:** EmailJS for contact form submissions
+- **Markup:** HTML5
+- **Language:** JavaScript, TypeScript
+- **Routing:** React Router with basename configuration
+- **Version Control:** Git & GitHub
+- **Deployment:** GitHub Pages
+- **Development:** React Scripts, Webpack, Babel
 
 ## Installation
 To run this portfolio locally, follow these steps:

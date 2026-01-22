@@ -1,6 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import emailjs from "@emailjs/browser";
+
+// Initialize EmailJS
+if (!window.emailjs) {
+  emailjs.init("EQgBmJfWlBESpiuQk");
+}
 
 const Container = styled.div`
   display: flex;
@@ -78,8 +83,14 @@ const ContactInput = styled.input`
   color: ${({ theme }) => theme.text_primary};
   border-radius: 12px;
   padding: 12px 16px;
+  font-family: inherit;
+  pointer-events: auto;
+  cursor: text;
   &:focus {
     border: 1px solid ${({ theme }) => theme.primary};
+  }
+  &::placeholder {
+    color: ${({ theme }) => theme.text_secondary + 70};
   }
 `;
 const ContactInputMessage = styled.textarea`
@@ -91,8 +102,15 @@ const ContactInputMessage = styled.textarea`
   color: ${({ theme }) => theme.text_primary};
   border-radius: 12px;
   padding: 12px 16px;
+  font-family: inherit;
+  pointer-events: auto;
+  cursor: text;
+  resize: vertical;
   &:focus {
     border: 1px solid ${({ theme }) => theme.primary};
+  }
+  &::placeholder {
+    color: ${({ theme }) => theme.text_secondary + 70};
   }
 `;
 const ContactButton = styled.input`
@@ -127,22 +145,28 @@ const ContactButton = styled.input`
 const Contact = () => {
   const form = useRef();
 
+  useEffect(() => {
+    emailjs.init("EQgBmJfWlBESpiuQk");
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     emailjs
       .sendForm(
-        "service_tox7kqs",
-        "template_nv7k7mj",
+        "service_00528jt",
+        "template_d5qw1sc",
         form.current,
-        "SybVGsYS52j2TfLbi"
+        "EQgBmJfWlBESpiuQk"
       )
       .then(
         (result) => {
-          alert("Message Sent");
+          alert("Message Sent Successfully! I'll get back to you soon.");
           form.current.reset();
         },
         (error) => {
-          alert(error);
+          alert("Failed to send message. Please try again.");
+          console.error("EmailJS Error:", error);
         }
       );
   };
@@ -154,12 +178,12 @@ const Contact = () => {
         <Desc>
           Feel free to reach out to me for any questions or opportunities!
         </Desc>
-        <ContactForm onSubmit={handleSubmit}>
+        <ContactForm onSubmit={handleSubmit} ref={form}>
           <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" name="message" rows={4} />
+          <ContactInput placeholder="Your Email" name="from_email" required />
+          <ContactInput placeholder="Your Name" name="from_name" required />
+          <ContactInput placeholder="Subject" name="subject" required />
+          <ContactInputMessage placeholder="Message" name="message" rows={4} required />
           <ContactButton type="submit" value="Send" />
         </ContactForm>
       </Wrapper>

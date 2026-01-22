@@ -48,7 +48,7 @@ function SiteRoot() {
   const [openModal, setOpenModal] = useState({ state: false, project: null });
   return (
     <ThemeProvider theme={darkTheme}>
-      <BrowserRouter>
+      <BrowserRouter basename="/gandhar-Portfolio-Website">
         <Navbar />
         <Body>
           <Suspense fallback={null}>

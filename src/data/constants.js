@@ -7,7 +7,6 @@ import GitamAttendanceLogo from "../images/gitam-logo.png";
 import FlutterIcon from "../images/Flutter.png";
 import FlutterFlowIcon from "../images/FlutterFlow.png";
 import DreamflowIcon from "../images/Dreamflow.jpeg";
-import HeroImage from "../images/HeroImage.jpg";
 import OasisLogo from "../images/Oasis Infobyte.jpg";
 
 export const Bio = {
@@ -255,17 +254,6 @@ export const projects = [
     category: "web app",
     github: "https://github.com/gandharr/GITAM-Attendance-Calculator",
     webapp: "https://gitamattendance.vercel.app/",
-  },
-  {
-    id: 2,
-    title: "3D Portfolio Website",
-    date: "Dec 2025 – Jan 2026",
-    description:
-      "Created an interactive 3D portfolio website showcasing professional work, skills, and achievements. Integrated smooth animations, dynamic components, and responsive design with Three.js for immersive 3D visuals. Built with modern web technologies to deliver a polished, production-ready portfolio with email integration and project showcases.",
-    image: HeroImage,
-    tags: ["React", "Three.js", "Framer Motion", "Styled Components", "JavaScript"],
-    category: "web app",
-    github: "https://github.com/gandharr/GandharVijayDhore.github.io",
   },
 ];
 
