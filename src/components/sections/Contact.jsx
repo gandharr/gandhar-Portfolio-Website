@@ -1,12 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import emailjs from "@emailjs/browser";
 import { Bio } from "../../data/constants";
 
 // Initialize EmailJS
-if (!window.emailjs) {
-  emailjs.init("EQgBmJfWlBESpiuQk");
-}
+emailjs.init("EQgBmJfWlBESpiuQk");
 
 const Container = styled.div`
   display: flex;
@@ -141,48 +139,68 @@ const ContactButton = styled.input`
   color: ${({ theme }) => theme.text_primary};
   font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 16px rgba(135, 29, 232, 0.4);
+  }
 `;
 
 const Contact = () => {
   const form = useRef();
-
-  useEffect(() => {
-    emailjs.init("EQgBmJfWlBESpiuQk");
-  }, []);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    setLoading(true);
+
+    // Prepare template parameters with recipient email
+    const templateParams = {
+      from_email: form.current.from_email.value,
+      from_name: form.current.from_name.value,
+      subject: form.current.subject.value,
+      message: form.current.message.value,
+      to_email: Bio.email, // Send to your email
+    };
+
     emailjs
-      .sendForm(
+      .send(
         "service_00528jt",
         "template_d5qw1sc",
-        form.current,
+        templateParams,
         "EQgBmJfWlBESpiuQk"
       )
       .then(
         (result) => {
+          setLoading(false);
           alert("Message Sent Successfully! I'll get back to you soon.");
           form.current.reset();
         },
         (error) => {
-            alert("Failed to send message. Opening your mail client as a fallback.");
-            console.error("EmailJS Error:", error);
-            try {
-              const formData = new FormData(form.current);
-              const fromEmail = formData.get("from_email") || "";
-              const fromName = formData.get("from_name") || "";
-              const subject = formData.get("subject") || "";
-              const message = formData.get("message") || "";
-              const body = `From: ${fromName} <${fromEmail}>\n\n${message}`;
-              const mailto = `mailto:${encodeURIComponent(Bio.email)}?subject=${encodeURIComponent(
-                subject
-              )}&body=${encodeURIComponent(body)}`;
-              window.location.href = mailto;
-            } catch (mailErr) {
-              console.error("Fallback mailto error:", mailErr);
-            }
+          setLoading(false);
+          alert("Failed to send message. Opening your mail client as a fallback.");
+          console.error("EmailJS Error:", error);
+          try {
+            const fromEmail = form.current.from_email.value || "";
+            const fromName = form.current.from_name.value || "";
+            const subject = form.current.subject.value || "";
+            const message = form.current.message.value || "";
+            const body = `From: ${fromName} <${fromEmail}>\n\n${message}`;
+            const mailto = `mailto:${encodeURIComponent(Bio.email)}?subject=${encodeURIComponent(
+              subject
+            )}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailto;
+          } catch (mailErr) {
+            console.error("Fallback mailto error:", mailErr);
           }
+        }
       );
   };
 
@@ -199,7 +217,7 @@ const Contact = () => {
           <ContactInput placeholder="Your Name" name="from_name" required />
           <ContactInput placeholder="Subject" name="subject" required />
           <ContactInputMessage placeholder="Message" name="message" rows={4} required />
-          <ContactButton type="submit" value="Send" />
+          <ContactButton type="submit" value={loading ? "Sending..." : "Send"} disabled={loading} />
         </ContactForm>
       </Wrapper>
     </Container>

@@ -46,5 +46,5 @@ body {
 }
 
 ::-webkit-backdrop-filter {
-  blur: 3px saturate(106%);
+  fill: 3px saturate(106%);
 }
