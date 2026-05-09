@@ -14,6 +14,7 @@ export const Bio = {
   name: "Gandhar Vijay Dhore",
   roles: [
     "Full Stack Developer",
+    "MERN Stack Developer",
     "UI/UX Designer",
     "Programmer",
   ],
