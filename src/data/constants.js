@@ -179,16 +179,6 @@ export const skills = [
 
 export const experiences = [
   {
-    id: 3,
-    img: ZidioLogo,
-    role: "User Experience Designer",
-    company: "Zidio Development · Internship",
-    date: "May 2026 – Present",
-    desc:
-      "Working as a User Experience Designer intern contributing to product UX, wireframes, prototypes, and collaboration with engineering to improve usability.",
-    skills: ["UI/UX", "Figma", "Prototyping", "User Research"],
-  },
-  {
     id: 0,
     img: HyprDevsLogo,
     role: "UI/UX Design Intern",
@@ -217,6 +207,16 @@ export const experiences = [
     desc:
       "Designed and developed a modern, fully responsive 3D portfolio website to showcase professional work, skills, and achievements. Implemented interactive animations, smooth scrolling, and dynamic components using React.js and Three.js for enhanced user engagement. Integrated email functionality, project showcases, and professional sections including education, experience, and skills with a polished, production-ready design.",
     skills: ["React", "Three.js", "Framer Motion", "Tailwind CSS", "UI/UX Design", "JavaScript", "Responsive Design"],
+  },
+  {
+    id: 3,
+    img: ZidioLogo,
+    role: "User Experience Designer",
+    company: "Zidio Development · Internship",
+    date: "May 2026 – Present",
+    desc:
+      "Working as a User Experience Designer intern contributing to product UX, wireframes, prototypes, and collaboration with engineering to improve usability.",
+    skills: ["UI/UX", "Figma", "Prototyping", "User Research"],
   },
 ];
 
