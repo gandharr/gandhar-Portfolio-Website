@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import emailjs from "@emailjs/browser";
+import { Bio } from "../../data/constants";
 
 // Initialize EmailJS
 if (!window.emailjs) {
@@ -165,9 +166,23 @@ const Contact = () => {
           form.current.reset();
         },
         (error) => {
-          alert("Failed to send message. Please try again.");
-          console.error("EmailJS Error:", error);
-        }
+            alert("Failed to send message. Opening your mail client as a fallback.");
+            console.error("EmailJS Error:", error);
+            try {
+              const formData = new FormData(form.current);
+              const fromEmail = formData.get("from_email") || "";
+              const fromName = formData.get("from_name") || "";
+              const subject = formData.get("subject") || "";
+              const message = formData.get("message") || "";
+              const body = `From: ${fromName} <${fromEmail}>\n\n${message}`;
+              const mailto = `mailto:${encodeURIComponent(Bio.email)}?subject=${encodeURIComponent(
+                subject
+              )}&body=${encodeURIComponent(body)}`;
+              window.location.href = mailto;
+            } catch (mailErr) {
+              console.error("Fallback mailto error:", mailErr);
+            }
+          }
       );
   };
 

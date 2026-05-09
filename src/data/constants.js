@@ -236,7 +236,6 @@ export const education = [
     img: NarayanaLogo,
     school: "Narayana Junior College | Hyderabad, Telangana",
     date: "June 2020 – May 2023",
-    grade: " 10.0 GPA ",
     desc: "I have completed my intermediate education with a focus on Mathematics, Physics, and Chemistry (MPC), building a strong foundation in analytical and problem-solving skills.",
     degree: "Intermediate - MPC",
   },
