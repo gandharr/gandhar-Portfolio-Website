@@ -179,24 +179,14 @@ export const skills = [
 
 export const experiences = [
   {
-    id: 0,
-    img: HyprDevsLogo,
-    role: "UI/UX Design Intern",
-    company: "HyprDevs – Remote",
-    date: "June 2025 – July 2025",
+    id: 3,
+    img: ZidioLogo,
+    role: "User Experience Designer",
+    company: "Zidio Development · Internship",
+    date: "May 2026 – Present",
     desc:
-      "Implemented a simple, intuitive web-based task management system using React and Firestore with a dashboard, real-time task logging, and secure user management. Built a comprehensive design system showcasing reusable UI components, color palettes, typography, and interactions. Delivered TaskFlow, a clear, easy-to-use task manager with seamless login, dashboards, and task flows.",
-    skills: ["React", "Firebase", "Firestore", "UI/UX", "Design System"],
-  },
-  {
-    id: 1,
-    img: BluestockLogo,
-    role: "SDE Intern",
-    company: "Bluestock Fintech – Remote",
-    date: "July 2025 – August 2025",
-    desc:
-      "Developed high-performance RESTful services for trading functions using Node.js/Express and PostgreSQL. Integrated REST APIs with the frontend to reduce page loading time. Implemented accessibility standards and responsive components, increasing successful user flow completion.",
-    skills: ["Node.js", "Express", "PostgreSQL", "REST APIs", "Accessibility", "Responsive UI", "React"],
+      "Working as a User Experience Designer intern contributing to product UX, wireframes, prototypes, and collaboration with engineering to improve usability.",
+    skills: ["UI/UX", "Figma", "Prototyping", "User Research"],
   },
   {
     id: 2,
@@ -209,14 +199,24 @@ export const experiences = [
     skills: ["React", "Three.js", "Framer Motion", "Tailwind CSS", "UI/UX Design", "JavaScript", "Responsive Design"],
   },
   {
-    id: 3,
-    img: ZidioLogo,
-    role: "User Experience Designer",
-    company: "Zidio Development · Internship",
-    date: "May 2026 – Present",
+    id: 1,
+    img: BluestockLogo,
+    role: "SDE Intern",
+    company: "Bluestock Fintech – Remote",
+    date: "July 2025 – August 2025",
     desc:
-      "Working as a User Experience Designer intern contributing to product UX, wireframes, prototypes, and collaboration with engineering to improve usability.",
-    skills: ["UI/UX", "Figma", "Prototyping", "User Research"],
+      "Developed high-performance RESTful services for trading functions using Node.js/Express and PostgreSQL. Integrated REST APIs with the frontend to reduce page loading time. Implemented accessibility standards and responsive components, increasing successful user flow completion.",
+    skills: ["Node.js", "Express", "PostgreSQL", "REST APIs", "Accessibility", "Responsive UI", "React"],
+  },
+  {
+    id: 0,
+    img: HyprDevsLogo,
+    role: "UI/UX Design Intern",
+    company: "HyprDevs – Remote",
+    date: "June 2025 – July 2025",
+    desc:
+      "Implemented a simple, intuitive web-based task management system using React and Firestore with a dashboard, real-time task logging, and secure user management. Built a comprehensive design system showcasing reusable UI components, color palettes, typography, and interactions. Delivered TaskFlow, a clear, easy-to-use task manager with seamless login, dashboards, and task flows.",
+    skills: ["React", "Firebase", "Firestore", "UI/UX", "Design System"],
   },
 ];
 
