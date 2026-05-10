@@ -2,7 +2,7 @@ import GitamLogo from "../images/Gitamlogo.png";
 import NarayanaLogo from "../images/Narayanalogo.png";
 import HyprDevsLogo from "../images/HyprDevs.jpeg";
 import BluestockLogo from "../images/Bluestock.jpeg";
-import StellarVaultLogo from "../images/stellar-vault-logo-rounded.svg";
+import StellarVaultLogo from "../images/stellar-vault-logo.png";
 import GitamAttendanceLogo from "../images/gitam-logo.png";
 import FlutterIcon from "../images/Flutter.png";
 import FlutterFlowIcon from "../images/FlutterFlow.png";
@@ -262,7 +262,7 @@ export const projects = [
     description:
       "Designed and built a secure, cloud‑synced credential manager using Next.js and Firebase. Implemented Firebase Authentication with session persistence and a responsive vault UI for adding, organizing, and retrieving credentials across devices.",
     image: StellarVaultLogo,
-    tags: ["Next.js", "React", "TypeScript", "Firebase"],
+    tags: ["Full Stack Development", "Authentication", "Cloud Deployment", "Database Integration", "JavaScript"],
     category: "web app",
     github: "https://github.com/gandharr/Stellar-Vault",
     webapp: "https://stellar-vault-manager.vercel.app/",

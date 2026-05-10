@@ -108,7 +108,7 @@ const ProjectCard = ({ project, setOpenModal }) => {
       <Image src={project.image} $rounded={project.id === 0} />
       <Tags>
         {project.tags?.map((tag, index) => (
-          <Tag>{tag}</Tag>
+          <Tag key={index}>{tag}</Tag>
         ))}
       </Tags>
       <Details>
@@ -117,8 +117,8 @@ const ProjectCard = ({ project, setOpenModal }) => {
         <Description>{project.description}</Description>
       </Details>
       <Members>
-        {project.member?.map((member) => (
-          <Avatar src={member.img} />
+        {project.member?.map((member, i) => (
+          <Avatar key={i} src={member.img} />
         ))}
       </Members>
     </Card>
