@@ -10,7 +10,7 @@
       <stop offset="100%" stop-color="#C4B5FD"/>
     </linearGradient>
   </defs>
-  <rect width="160" height="160" rx="32" fill="white"/>
+  <rect width="160" height="160" rx="32" fill="none"/>
   <path d="M42 16L118 16L92 68H128L52 144L76 90H38L42 16Z" fill="url(#vaultGradient)"/>
   <path d="M64 44L104 44L86 80H116L74 122L86 88H58L64 44Z" fill="url(#vaultGlow)" opacity="0.95"/>
 </svg>
