@@ -9,6 +9,7 @@ import FlutterFlowIcon from "../images/FlutterFlow.png";
 import DreamflowIcon from "../images/Dreamflow.jpeg";
 import OasisLogo from "../images/Oasis Infobyte.jpg";
 import ZidioLogo from "../images/Zidio-Logo.jpg";
+import AICareerLogo from "../images/ai-career-logo.svg";
 
 export const Bio = {
   name: "Gandhar Vijay Dhore",
@@ -242,6 +243,18 @@ export const education = [
 ];
 
 export const projects = [
+  {
+    id: 2,
+    title: "AI-Powered Career Intelligence Platform",
+    date: "April 2026 - May 2026",
+    description:
+      "Developed an AI-powered career intelligence platform that analyzes resumes, recommends suitable career roles, identifies skill gaps, and generates personalized learning paths. Built using React, FastAPI, and modern AI workflows with responsive UI and explainable recommendation systems.",
+    image: AICareerLogo,
+    tags: ["React", "FastAPI", "Python", "AI/ML", "REST APIs", "JavaScript", "Responsive Design"],
+    category: "web app",
+    github: "https://github.com/gandharr/AI-Career",
+    webapp: "https://gandharr.github.io/AI-Career/",
+  },
   {
     id: 0,
     title: "Stellar Vault Manager",

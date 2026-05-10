@@ -26,6 +26,10 @@ const Image = styled.img`
   background-color: ${({ theme }) => theme.white};
   border-radius: 10px;
   box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+  object-position: center;
+  padding: 14px;
+  box-sizing: border-box;
 `;
 const Tags = styled.div`
   width: 100%;
