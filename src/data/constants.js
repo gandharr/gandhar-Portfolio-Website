@@ -4,6 +4,7 @@ import HyprDevsLogo from "../images/HyprDevs.jpeg";
 import BluestockLogo from "../images/Bluestock.jpeg";
 import StellarVaultLogo from "../images/stellar-vault-logo.png";
 import GitamAttendanceLogo from "../images/gitam-logo.png";
+import VaultFinanceLogo from "../images/vault-finance-logo.svg";
 import FlutterIcon from "../images/Flutter.png";
 import FlutterFlowIcon from "../images/FlutterFlow.png";
 import DreamflowIcon from "../images/Dreamflow.jpeg";
@@ -243,6 +244,18 @@ export const education = [
 ];
 
 export const projects = [
+  {
+    id: 3,
+    title: "Vault Finance",
+    date: "April 2026 - May 2026",
+    description:
+      "Built a modern financial analytics dashboard featuring interactive visualizations, responsive UI components, and scalable frontend architecture for financial data management and analytics.",
+    image: VaultFinanceLogo,
+    tags: ["React", "JavaScript", "Dashboard Design", "Data Visualization", "Frontend Development", "Responsive UI"],
+    category: "web app",
+    github: "https://github.com/gandharr/Vault-Finance",
+    webapp: "https://gandharr.github.io/Vault-Finance/",
+  },
   {
     id: 2,
     title: "AI-Powered Career Intelligence Platform",
