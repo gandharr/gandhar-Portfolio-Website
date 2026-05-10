@@ -23,8 +23,8 @@ const Card = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 180px;
-  background-color: ${({ theme }) => theme.white};
-  border-radius: 10px;
+  background-color: ${({ theme }) => theme.card};
+  border-radius: ${({ $rounded }) => ($rounded ? "24px" : "10px")};
   box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
   object-fit: contain;
   object-position: center;
@@ -105,7 +105,7 @@ const Avatar = styled.img`
 const ProjectCard = ({ project, setOpenModal }) => {
   return (
     <Card onClick={() => setOpenModal({ state: true, project: project })}>
-      <Image src={project.image} />
+      <Image src={project.image} $rounded={project.id === 0} />
       <Tags>
         {project.tags?.map((tag, index) => (
           <Tag>{tag}</Tag>
