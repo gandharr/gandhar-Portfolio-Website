@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gandhar-Portfolio-Website/static/css/main.2f80d222.css",
-    "main.js": "/gandhar-Portfolio-Website/static/js/main.e68ea7d2.js",
+    "main.js": "/gandhar-Portfolio-Website/static/js/main.330e5ec3.js",
     "static/js/159.76a15cbb.chunk.js": "/gandhar-Portfolio-Website/static/js/159.76a15cbb.chunk.js",
     "static/css/17.e3e23fa9.chunk.css": "/gandhar-Portfolio-Website/static/css/17.e3e23fa9.chunk.css",
     "static/js/17.c1bf6db3.chunk.js": "/gandhar-Portfolio-Website/static/js/17.c1bf6db3.chunk.js",
     "static/css/448.e3e23fa9.chunk.css": "/gandhar-Portfolio-Website/static/css/448.e3e23fa9.chunk.css",
     "static/js/448.4a310ff5.chunk.js": "/gandhar-Portfolio-Website/static/js/448.4a310ff5.chunk.js",
-    "static/js/595.949465b9.chunk.js": "/gandhar-Portfolio-Website/static/js/595.949465b9.chunk.js",
+    "static/js/595.accd30b8.chunk.js": "/gandhar-Portfolio-Website/static/js/595.accd30b8.chunk.js",
     "static/js/222.4c01606d.chunk.js": "/gandhar-Portfolio-Website/static/js/222.4c01606d.chunk.js",
     "static/js/832.e21ffad7.chunk.js": "/gandhar-Portfolio-Website/static/js/832.e21ffad7.chunk.js",
     "static/js/138.b84c695f.chunk.js": "/gandhar-Portfolio-Website/static/js/138.b84c695f.chunk.js",
@@ -23,6 +23,6 @@
   },
   "entrypoints": [
     "static/css/main.2f80d222.css",
-    "static/js/main.e68ea7d2.js"
+    "static/js/main.330e5ec3.js"
   ]
 }
