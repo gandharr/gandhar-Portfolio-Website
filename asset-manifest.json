@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gandhar-Portfolio-Website/static/css/main.2f80d222.css",
-    "main.js": "/gandhar-Portfolio-Website/static/js/main.f2ca50c1.js",
+    "main.js": "/gandhar-Portfolio-Website/static/js/main.192ab4e9.js",
     "static/js/159.7b84cb23.chunk.js": "/gandhar-Portfolio-Website/static/js/159.7b84cb23.chunk.js",
     "static/css/17.e3e23fa9.chunk.css": "/gandhar-Portfolio-Website/static/css/17.e3e23fa9.chunk.css",
     "static/js/17.e1acf453.chunk.js": "/gandhar-Portfolio-Website/static/js/17.e1acf453.chunk.js",
@@ -14,15 +14,15 @@
     "static/js/18.a57ec9d3.chunk.js": "/gandhar-Portfolio-Website/static/js/18.a57ec9d3.chunk.js",
     "static/js/920.742ca5f9.chunk.js": "/gandhar-Portfolio-Website/static/js/920.742ca5f9.chunk.js",
     "static/media/HeroImage.jpg": "/gandhar-Portfolio-Website/static/media/HeroImage.14c20622735094c482e0.jpg",
-    "static/media/stellar-vault-logo-rounded.svg": "/gandhar-Portfolio-Website/static/media/stellar-vault-logo-rounded.edb4e1ff8b98c0e12eb412eecf3a9087.svg",
     "static/media/Narayanalogo.png": "/gandhar-Portfolio-Website/static/media/Narayanalogo.48ea9b32eab0dee62080.png",
     "static/media/gitam-logo.png": "/gandhar-Portfolio-Website/static/media/gitam-logo.e364776a2aa538c50773.png",
     "static/media/Oasis Infobyte.jpg": "/gandhar-Portfolio-Website/static/media/Oasis Infobyte.2767df4428921f94190c.jpg",
     "static/media/ai-career-logo.svg": "/gandhar-Portfolio-Website/static/media/ai-career-logo.e3c7e5ce3586b3d33ee284932617253f.svg",
-    "index.html": "/gandhar-Portfolio-Website/index.html"
+    "index.html": "/gandhar-Portfolio-Website/index.html",
+    "static/media/stellar-vault-logo-rounded.svg": "/gandhar-Portfolio-Website/static/media/stellar-vault-logo-rounded.7acd63976c621759ce0a9c366224bf20.svg"
   },
   "entrypoints": [
     "static/css/main.2f80d222.css",
-    "static/js/main.f2ca50c1.js"
+    "static/js/main.192ab4e9.js"
   ]
 }

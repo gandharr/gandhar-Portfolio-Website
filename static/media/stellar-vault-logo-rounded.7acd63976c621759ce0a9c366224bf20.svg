@@ -1,0 +1,11 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="rounded">
+      <rect x="0" y="0" width="1024" height="1024" rx="160" ry="160" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#rounded)">
+    <!-- Reference the PNG in the same folder; bundlers copy assets so relative href works at runtime -->
+    <image href="./stellar-vault-logo.png" x="0" y="0" width="1024" height="1024" preserveAspectRatio="xMidYMid slice" />
+  </g>
+</svg>
