@@ -1,0 +1,16 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="vaultGradient" x1="20" y1="20" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="55%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="vaultGlow" x1="30" y1="20" x2="130" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5F3FF"/>
+      <stop offset="100%" stop-color="#C4B5FD"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="32" fill="white"/>
+  <path d="M42 16L118 16L92 68H128L52 144L76 90H38L42 16Z" fill="url(#vaultGradient)"/>
+  <path d="M64 44L104 44L86 80H116L74 122L86 88H58L64 44Z" fill="url(#vaultGlow)" opacity="0.95"/>
+</svg>
