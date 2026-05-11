@@ -9,10 +9,10 @@ const Card = styled.div`
   border-radius: 10px;
   box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  padding: 26px 20px;
+  padding: 20px 18px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   transition: all 0.5s ease-in-out;
   &:hover {
     transform: translateY(-10px);
@@ -20,32 +20,41 @@ const Card = styled.div`
     filter: brightness(1.1);
   }
 `;
-const Image = styled.img`
+const ImageWrapper = styled.div`
   width: 100%;
   height: 180px;
-  background-color: ${({ theme }) => theme.card};
-  border-radius: ${({ $rounded }) => ($rounded ? "24px" : "10px")};
-  box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #0a1e4d 0%, #1a3a6b 100%);
+  border-radius: 30px;
+  box-shadow: 0 0 20px 4px rgba(10, 30, 77, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  box-sizing: border-box;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center;
-  padding: 14px;
-  box-sizing: border-box;
 `;
 const Tags = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
+  gap: 10px;
+  margin-top: 10px;
 `;
 const Tag = styled.div`
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   color: ${({ theme }) => theme.primary};
-  background-color: ${({ theme }) => theme.primary + 15};
-  padding: 2px 8px;
-  border-radius: 10px;
+  background-color: transparent;
+  border: 1.5px solid ${({ theme }) => theme.primary};
+  padding: 6px 12px;
+  border-radius: 20px;
 `;
 const Details = styled.div`
   width: 100%;
@@ -53,11 +62,12 @@ const Details = styled.div`
   flex-direction: column;
   gap: 0px;
   padding: 0px 2px;
+  flex: 1;
 `;
 const Title = styled.div`
   font-size: 20px;
   font-weight: 600;
-  color: ${({ theme }) => theme.text_secondary};
+  color: ${({ theme }) => theme.text_primary};
   overflow: hidden;
   display: -webkit-box;
   max-width: 100%;
@@ -67,19 +77,21 @@ const Title = styled.div`
   text-overflow: ellipsis;
 `;
 const Date = styled.div`
-  font-size: 12px;
+  font-size: 13px;
   margin-left: 2px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text_secondary + 80};
+  margin-top: 6px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.text_secondary};
   @media only screen and (max-width: 768px) {
-    font-size: 10px;
+    font-size: 11px;
   }
 `;
 const Description = styled.div`
+  font-size: 14px;
   font-weight: 400;
-  color: ${({ theme }) => theme.text_secondary + 99};
+  color: ${({ theme }) => theme.text_secondary};
   overflow: hidden;
-  margin-top: 8px;
+  margin-top: 10px;
   display: -webkit-box;
   max-width: 100%;
   -webkit-line-clamp: 3;
@@ -105,7 +117,9 @@ const Avatar = styled.img`
 const ProjectCard = ({ project, setOpenModal }) => {
   return (
     <Card onClick={() => setOpenModal({ state: true, project: project })}>
-      <Image src={project.image} $rounded={project.id === 0} />
+      <ImageWrapper>
+        <Image src={project.image} />
+      </ImageWrapper>
       <Tags>
         {project.tags?.map((tag, index) => (
           <Tag key={index}>{tag}</Tag>

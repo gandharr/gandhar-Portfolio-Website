@@ -2,7 +2,7 @@ import GitamLogo from "../images/Gitamlogo.png";
 import NarayanaLogo from "../images/Narayanalogo.png";
 import HyprDevsLogo from "../images/HyprDevs.jpeg";
 import BluestockLogo from "../images/Bluestock.jpeg";
-import StellarVaultLogo from "../images/stellar-vault-logo-rounded.svg";
+import StellarVaultLogo from "../images/stellar-vault-logo.png";
 import GitamAttendanceLogo from "../images/gitam-logo.png";
 import VaultFinanceLogo from "../images/vault-finance-logo.svg";
 import FlutterIcon from "../images/Flutter.png";
