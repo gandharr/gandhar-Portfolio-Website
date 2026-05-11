@@ -17,7 +17,14 @@ const StyledCanvasWrapper = styled.div`
 const Stars = React.memo((props) => {
   const ref = useRef();
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(2000), { radius: 1.2 })
+    // generate positions and sanitize any NaN values to avoid BufferGeometry errors
+    (() => {
+      const arr = random.inSphere(new Float32Array(2000), { radius: 1.2 });
+      for (let i = 0; i < arr.length; i++) {
+        if (!Number.isFinite(arr[i]) || Number.isNaN(arr[i])) arr[i] = 0;
+      }
+      return arr;
+    })()
   );
 
   useFrame((state, delta) => {
@@ -67,12 +74,14 @@ export default StyledStarsCanvas;
 const ShootingStar = ({ intervalMs = 8000 }) => {
   const starRef = useRef();
   const [active, setActive] = useState(false);
-  const [state, setState] = useState({
+  // use a ref to keep a mutable state for the animation loop and mirror to React state when needed
+  const stateRef = React.useRef({
     position: [-1.4, 0.9, 0],
     velocity: [0.9, -0.6, 0],
     opacity: 0,
-    ttl: 0
+    ttl: 0,
   });
+  const [, setTick] = React.useState(0); // tiny state to trigger re-renders when necessary
 
   useEffect(() => {
     let timer;
@@ -86,12 +95,15 @@ const ShootingStar = ({ intervalMs = 8000 }) => {
         const speed = 1.2 + Math.random() * 0.6;
         const vx = (startLeft ? 1 : -1) * speed;
         const vy = -0.8 * speed;
-        setState({
-          position: [startX, startY, 0],
-          velocity: [vx, vy, 0],
-          opacity: 0.9,
-          ttl: 1.4 // seconds on screen
-        });
+          const next = {
+            position: [startX, startY, 0],
+            velocity: [vx, vy, 0],
+            opacity: 0.9,
+            ttl: 1.4, // seconds on screen
+          };
+          stateRef.current = next;
+          // trigger a render so UI reflects initial star position
+          setTick((t) => t + 1);
         setActive(true);
         schedule(); // schedule next run again for continuous streaks
       }, intervalMs);
@@ -102,21 +114,25 @@ const ShootingStar = ({ intervalMs = 8000 }) => {
 
   useFrame((_, delta) => {
     if (!active || !starRef.current) return;
-    // Update position
-    const [x, y, z] = state.position;
-    const [vx, vy, vz] = state.velocity;
+    // Update position from mutable ref to avoid stale closures
+    const s = stateRef.current;
+    const [x, y, z] = s.position;
+    const [vx, vy, vz] = s.velocity;
     const nx = x + vx * delta;
     const ny = y + vy * delta;
     const nz = z + vz * delta;
     // Fade out
-    const nextTTL = state.ttl - delta;
-    const nextOpacity = Math.max(0, state.opacity - delta * 0.8);
-    setState({
+    const nextTTL = s.ttl - delta;
+    const nextOpacity = Math.max(0, s.opacity - delta * 0.8);
+    const next = {
       position: [nx, ny, nz],
       velocity: [vx, vy, vz],
       opacity: nextOpacity,
-      ttl: nextTTL
-    });
+      ttl: nextTTL,
+    };
+    stateRef.current = next;
+    // occasional re-render to update any UI/props bound to state
+    setTick((t) => t + 1);
     starRef.current.position.set(nx, ny, nz);
     starRef.current.material.opacity = nextOpacity;
     // Deactivate when off-screen or ttl expired
@@ -126,10 +142,14 @@ const ShootingStar = ({ intervalMs = 8000 }) => {
   });
 
   // Render a thin streak (box) with additive blending
+  const rot = stateRef.current?.velocity && Number.isFinite(stateRef.current.velocity[0]) && Number.isFinite(stateRef.current.velocity[1])
+    ? Math.atan2(stateRef.current.velocity[1], stateRef.current.velocity[0])
+    : 0;
+
   return (
-    <mesh ref={starRef} position={state.position} rotation={[0, 0, Math.atan2(state.velocity[1], state.velocity[0])]}>
+    <mesh ref={starRef} position={stateRef.current.position} rotation={[0, 0, rot]}>
       <boxGeometry args={[0.12, 0.004, 0.004]} />
-      <meshBasicMaterial color="#ffffff" transparent opacity={state.opacity} />
+      <meshBasicMaterial color="#ffffff" transparent opacity={stateRef.current.opacity} />
     </mesh>
   );
 };
