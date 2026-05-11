@@ -120,7 +120,7 @@ const Footer = () => {
           <MailOutlineIcon fontSize="small" />
           {Bio.email}
         </Email>
-        <Copyright>&copy; 2025 Gandhar Vijay Dhore. All rights reserved.</Copyright>
+        <Copyright>&copy;Gandhar Vijay Dhore. All rights reserved.</Copyright>
       </FooterWrapper>
     </FooterContainer>
   );
