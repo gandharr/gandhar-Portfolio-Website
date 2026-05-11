@@ -46,9 +46,13 @@ const Wrapper = styled.div`
 
 function SiteRoot() {
   const [openModal, setOpenModal] = useState({ state: false, project: null });
+  const isLocalhost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+  const routerBasename = isLocalhost ? "/" : "/gandhar-Portfolio-Website";
   return (
     <ThemeProvider theme={darkTheme}>
-      <BrowserRouter basename="/gandhar-Portfolio-Website">
+      <BrowserRouter basename={routerBasename}>
         <Navbar />
         <Body>
           <Suspense fallback={null}>
