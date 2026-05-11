@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gandhar-Portfolio-Website/static/css/main.2f80d222.css",
-    "main.js": "/gandhar-Portfolio-Website/static/js/main.70c674e0.js",
+    "main.js": "/gandhar-Portfolio-Website/static/js/main.8ad6a4c6.js",
     "static/js/159.f31ac36b.chunk.js": "/gandhar-Portfolio-Website/static/js/159.f31ac36b.chunk.js",
     "static/css/17.e3e23fa9.chunk.css": "/gandhar-Portfolio-Website/static/css/17.e3e23fa9.chunk.css",
     "static/js/17.e66740f2.chunk.js": "/gandhar-Portfolio-Website/static/js/17.e66740f2.chunk.js",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.2f80d222.css",
-    "static/js/main.70c674e0.js"
+    "static/js/main.8ad6a4c6.js"
   ]
 }
