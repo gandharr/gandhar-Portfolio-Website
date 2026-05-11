@@ -14,22 +14,37 @@ const StyledCanvasWrapper = styled.div`
   transform: translateZ(0);
 `;
 
+// Create sphere positions safely with hardcoded fallback
+const createSpherePositions = () => {
+  try {
+    const arr = random.inSphere(new Float32Array(2000), { radius: 1.2 });
+    // Sanitize any NaN or infinite values
+    for (let i = 0; i < arr.length; i++) {
+      if (!Number.isFinite(arr[i])) {
+        arr[i] = (Math.random() - 0.5) * 2 * 1.2; // fallback with random value
+      }
+    }
+    return arr;
+  } catch (e) {
+    console.error("Failed to create sphere positions:", e);
+    // Create a simple hardcoded fallback sphere
+    const fallback = new Float32Array(2000);
+    for (let i = 0; i < fallback.length; i++) {
+      fallback[i] = (Math.random() - 0.5) * 2 * 1.2;
+    }
+    return fallback;
+  }
+};
+
 const Stars = React.memo((props) => {
   const ref = useRef();
-  const [sphere] = useState(() =>
-    // generate positions and sanitize any NaN values to avoid BufferGeometry errors
-    (() => {
-      const arr = random.inSphere(new Float32Array(2000), { radius: 1.2 });
-      for (let i = 0; i < arr.length; i++) {
-        if (!Number.isFinite(arr[i]) || Number.isNaN(arr[i])) arr[i] = 0;
-      }
-      return arr;
-    })()
-  );
+  const [sphere] = useState(() => createSpherePositions());
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
+    if (ref.current) {
+      ref.current.rotation.x -= delta / 10;
+      ref.current.rotation.y -= delta / 15;
+    }
   });
 
   return (
@@ -47,24 +62,49 @@ const Stars = React.memo((props) => {
   );
 });
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error) {
+    console.error("Stars canvas error:", error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return null;
+    }
+    return this.props.children;
+  }
+}
+
 const StyledStarsCanvas = () => {
   return (
-    <StyledCanvasWrapper>
-      <Canvas 
-        camera={{ position: [0, 0, 1] }}
-        gl={{ 
-          powerPreference: "high-performance",
-          antialias: false,
-          stencil: false,
-          depth: false
-        }}
-      >
-        <Suspense fallback={null}>
-          <Stars />
-          <ShootingStar intervalMs={6000} />
-        </Suspense>
-      </Canvas>
-    </StyledCanvasWrapper>
+    <ErrorBoundary>
+      <StyledCanvasWrapper>
+        <Canvas 
+          camera={{ position: [0, 0, 1] }}
+          gl={{ 
+            powerPreference: "high-performance",
+            antialias: false,
+            stencil: false,
+            depth: false
+          }}
+          onError={() => console.error("Canvas error")}
+        >
+          <Suspense fallback={null}>
+            <Stars />
+            <ShootingStar intervalMs={6000} />
+          </Suspense>
+        </Canvas>
+      </StyledCanvasWrapper>
+    </ErrorBoundary>
   );
 };
 
@@ -95,48 +135,55 @@ const ShootingStar = ({ intervalMs = 8000 }) => {
         const speed = 1.2 + Math.random() * 0.6;
         const vx = (startLeft ? 1 : -1) * speed;
         const vy = -0.8 * speed;
-          const next = {
-            position: [startX, startY, 0],
-            velocity: [vx, vy, 0],
-            opacity: 0.9,
-            ttl: 1.4, // seconds on screen
-          };
-          stateRef.current = next;
-          // trigger a render so UI reflects initial star position
-          setTick((t) => t + 1);
+        const next = {
+          position: [startX, startY, 0],
+          velocity: [vx, vy, 0],
+          opacity: 0.9,
+          ttl: 1.4, // seconds on screen
+        };
+        stateRef.current = next;
+        // trigger a render so UI reflects initial star position
+        setTick((t) => t + 1);
         setActive(true);
         schedule(); // schedule next run again for continuous streaks
       }, intervalMs);
     };
     schedule();
-    return () => clearTimeout(timer);
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, [intervalMs]);
 
   useFrame((_, delta) => {
-    if (!active || !starRef.current) return;
-    // Update position from mutable ref to avoid stale closures
-    const s = stateRef.current;
-    const [x, y, z] = s.position;
-    const [vx, vy, vz] = s.velocity;
-    const nx = x + vx * delta;
-    const ny = y + vy * delta;
-    const nz = z + vz * delta;
-    // Fade out
-    const nextTTL = s.ttl - delta;
-    const nextOpacity = Math.max(0, s.opacity - delta * 0.8);
-    const next = {
-      position: [nx, ny, nz],
-      velocity: [vx, vy, vz],
-      opacity: nextOpacity,
-      ttl: nextTTL,
-    };
-    stateRef.current = next;
-    // occasional re-render to update any UI/props bound to state
-    setTick((t) => t + 1);
-    starRef.current.position.set(nx, ny, nz);
-    starRef.current.material.opacity = nextOpacity;
-    // Deactivate when off-screen or ttl expired
-    if (nextTTL <= 0 || Math.abs(nx) > 2 || ny < -1.6) {
+    try {
+      if (!active || !starRef.current) return;
+      // Update position from mutable ref to avoid stale closures
+      const s = stateRef.current;
+      const [x, y, z] = s.position;
+      const [vx, vy, vz] = s.velocity;
+      const nx = x + vx * delta;
+      const ny = y + vy * delta;
+      const nz = z + vz * delta;
+      // Fade out
+      const nextTTL = s.ttl - delta;
+      const nextOpacity = Math.max(0, s.opacity - delta * 0.8);
+      const next = {
+        position: [nx, ny, nz],
+        velocity: [vx, vy, vz],
+        opacity: nextOpacity,
+        ttl: nextTTL,
+      };
+      stateRef.current = next;
+      // occasional re-render to update any UI/props bound to state
+      setTick((t) => t + 1);
+      starRef.current.position.set(nx, ny, nz);
+      starRef.current.material.opacity = nextOpacity;
+      // Deactivate when off-screen or ttl expired
+      if (nextTTL <= 0 || Math.abs(nx) > 2 || ny < -1.6) {
+        setActive(false);
+      }
+    } catch (e) {
+      console.error("ShootingStar animation error:", e);
       setActive(false);
     }
   });
