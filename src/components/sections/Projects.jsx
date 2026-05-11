@@ -3,88 +3,75 @@ import styled from "styled-components";
 import { projects } from "../../data/constants";
 import ProjectCard from "../cards/ProjectCard";
 
-const Container = styled.div`
-margin-top: 100px;
-display: flex;
-flex-direction: column;
-justify-content-center;
-position: relative;
-z-index: 1;
-padding: 0 16px;
-align-items: center;
-`;
-const Wrapper = styled.div`
-  position: relative;
+const Section = styled.section`
+  padding: 96px 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  max-width: 1100px;
-  gap: 12px;
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
+  justify-content: center;
+  position: relative;
+  z-index: 1;
 `;
 
-const Title = styled.div`
-  font-size: 52px;
+const Inner = styled.div`
+  width: 100%;
+  max-width: 1140px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+`;
+
+const Heading = styled.h2`
+  font-size: 48px;
+  margin: 0;
   text-align: center;
-  font-weight: 600;
-  margin-top: 20px;
   color: ${({ theme }) => theme.text_primary};
+  font-weight: 700;
+
   @media (max-width: 768px) {
-    margin-top: 12px;
     font-size: 32px;
   }
 `;
 
-const Desc = styled.div`
-  font-size: 18px;
+const Sub = styled.p`
+  margin: 0 auto;
   text-align: center;
-  font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
+  font-weight: 600;
+  font-size: 16px;
+  max-width: 780px;
+  padding-bottom: 6px;
 `;
 
-const CardContainer = styled.div`
+const Grid = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
+  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
-  @media (max-width: 768px) {
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 720px) {
     grid-template-columns: 1fr;
-    gap: 22px;
   }
 `;
 
 const Projects = ({ openModal, setOpenModal }) => {
   return (
-    <Container id="Projects">
-      <Wrapper>
-        <Title>Projects</Title>
-        <Desc
-          style={{
-            marginBottom: "40px",
-          }}
-        >
-          Here are some of my recent projects.
-        </Desc>
-        <CardContainer>
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={`project-${index}`}
-              project={project}
-              openModal={openModal}
-              setOpenModal={setOpenModal}
-            />
+    <Section id="Projects" aria-labelledby="projects-heading">
+      <Inner>
+        <Heading id="projects-heading">Projects</Heading>
+        <Sub>Here are some of my recent projects.</Sub>
+
+        <Grid>
+          {projects.map((p) => (
+            <ProjectCard key={p.id} project={p} openModal={openModal} setOpenModal={setOpenModal} />
           ))}
-        </CardContainer>
-      </Wrapper>
-    </Container>
+        </Grid>
+      </Inner>
+    </Section>
   );
 };
 

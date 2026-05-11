@@ -1,152 +1,156 @@
 import React from "react";
 import styled from "styled-components";
 
-const Card = styled.div`
-  width: 100%;
-  min-height: 520px;
-  background-color: ${({ theme }) => theme.card};
-  cursor: pointer;
-  border-radius: 18px;
-  border: 1px solid rgba(165, 132, 255, 0.2);
-  box-shadow: 0 16px 32px rgba(8, 12, 24, 0.45);
-  overflow: visible;
-  padding: 20px;
+const Card = styled.article`
+  background: ${({ theme }) => theme.card};
+  border: 1px solid ${({ theme }) => theme.white + "20"};
+  border-radius: 16px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-  &:hover {
-    transform: translateY(-8px);
-    border-color: rgba(165, 132, 255, 0.45);
-    box-shadow: 0 20px 44px rgba(10, 14, 32, 0.58), 0 0 22px rgba(127, 86, 217, 0.2);
-  }
+  min-height: 420px;
+  box-shadow: rgba(23, 92, 230, 0.12) 0px 4px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 
-  @media only screen and (max-width: 768px) {
-    min-height: auto;
-    padding: 18px;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: rgba(23, 92, 230, 0.25) 0px 10px 30px;
   }
 `;
-const ImageWrapper = styled.div`
-  width: 100%;
-  min-height: 170px;
-  background: linear-gradient(135deg, rgba(20, 24, 40, 0.65) 0%, rgba(45, 28, 82, 0.45) 100%);
-  border-radius: 20px;
-  border: 1px solid rgba(190, 164, 255, 0.22);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 12px 28px rgba(6, 10, 24, 0.35);
-  backdrop-filter: blur(6px);
+
+const LogoArea = styled.div`
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  box-sizing: border-box;
-
-  @media only screen and (max-width: 768px) {
-    min-height: 156px;
-    padding: 20px;
-  }
+  padding: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(22, 26, 40, 0.62) 0%,
+    rgba(38, 22, 70, 0.36) 100%
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
 `;
 
-const Image = styled.img`
-  width: 100%;
-  max-width: 250px;
+const Logo = styled.img`
+  max-width: 240px;
+  max-height: 110px;
+  width: auto;
   height: auto;
-  max-height: 120px;
   object-fit: contain;
-  object-position: center;
-  display: block;
 `;
-const Tags = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 2px;
-`;
-const Tag = styled.div`
-  font-size: 11px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.primary};
-  background-color: rgba(130, 87, 229, 0.08);
-  border: 1px solid rgba(165, 132, 255, 0.5);
-  padding: 5px 10px;
-  border-radius: 999px;
-`;
-const Details = styled.div`
-  width: 100%;
+
+const Content = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 0px 2px;
+  gap: 10px;
+  padding: 18px;
   flex: 1;
 `;
-const Title = styled.div`
+
+const Title = styled.h3`
+  margin: 0;
+  color: ${({ theme }) => theme.text_primary};
   font-size: 20px;
   line-height: 1.3;
-  font-weight: 650;
-  letter-spacing: 0.1px;
-  color: ${({ theme }) => theme.text_primary};
-  max-width: 100%;
 `;
-const Date = styled.div`
-  font-size: 12px;
-  line-height: 1.5;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-  margin-left: 2px;
-  margin-top: 2px;
-  font-weight: 500;
+
+const DateText = styled.p`
+  margin: 0;
   color: ${({ theme }) => theme.text_secondary};
-  @media only screen and (max-width: 768px) {
-    font-size: 11px;
+  font-size: 13px;
+`;
+
+const Description = styled.p`
+  margin: 0;
+  color: ${({ theme }) => theme.text_primary};
+  font-size: 14px;
+  line-height: 1.6;
+  flex: 1;
+`;
+
+const Tags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
+const Tag = styled.span`
+  font-size: 12px;
+  color: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.primary + "22"};
+  border-radius: 999px;
+  padding: 5px 10px;
+`;
+
+const Footer = styled.div`
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+`;
+
+const LinkButton = styled.a`
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.text_primary};
+  background: ${({ theme, $secondary }) => ($secondary ? theme.bgLight : theme.primary)};
+  transition: filter 0.2s ease;
+
+  &:hover {
+    filter: brightness(1.07);
   }
 `;
-const Description = styled.div`
-  font-size: 14px;
-  line-height: 1.65;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text_secondary};
-  margin-top: 8px;
-  max-width: 100%;
-`;
-const Members = styled.div`
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-  margin-top: auto;
-`;
-const Avatar = styled.img`
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  margin-left: -10px;
-  background-color: ${({ theme }) => theme.white};
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border: 3px solid ${({ theme }) => theme.card};
-`;
-
 
 const ProjectCard = ({ project, setOpenModal }) => {
+  if (!project) return null;
+
   return (
-    <Card onClick={() => setOpenModal({ state: true, project: project })}>
-      <ImageWrapper>
-        <Image src={project.image} alt={project.title} />
-      </ImageWrapper>
-      <Tags>
-        {project.tags?.map((tag, index) => (
-          <Tag key={index}>{tag}</Tag>
-        ))}
-      </Tags>
-      <Details>
+    <Card onClick={() => setOpenModal({ state: true, project })}>
+      <LogoArea>
+        <Logo src={project.image} alt={project.title} loading="lazy" />
+      </LogoArea>
+
+      <Content>
         <Title>{project.title}</Title>
-        <Date>{project.date}</Date>
+        <DateText>{project.date}</DateText>
         <Description>{project.description}</Description>
-      </Details>
-      <Members>
-        {project.member?.map((member, i) => (
-          <Avatar key={i} src={member.img} />
-        ))}
-      </Members>
+
+        <Tags>
+          {project.tags?.slice(0, 4).map((tag) => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
+        </Tags>
+
+        <Footer>
+          {project.github && (
+            <LinkButton
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              $secondary
+              onClick={(e) => e.stopPropagation()}
+            >
+              View Code
+            </LinkButton>
+          )}
+          {project.webapp && (
+            <LinkButton
+              href={project.webapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Live Demo
+            </LinkButton>
+          )}
+        </Footer>
+      </Content>
     </Card>
   );
 };
