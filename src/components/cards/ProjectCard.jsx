@@ -23,9 +23,9 @@ const Card = styled.div`
 const ImageWrapper = styled.div`
   width: 100%;
   height: 180px;
-  background: linear-gradient(135deg, #0a1e4d 0%, #1a3a6b 100%);
+  background: linear-gradient(135deg, #0d1420 0%, #0f1a30 100%);
   border-radius: 30px;
-  box-shadow: 0 0 20px 4px rgba(10, 30, 77, 0.4);
+  box-shadow: 0 0 20px 4px rgba(10, 20, 48, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
