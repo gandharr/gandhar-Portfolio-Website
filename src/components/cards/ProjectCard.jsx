@@ -38,6 +38,7 @@ const Image = styled.img`
   height: 100%;
   object-fit: contain;
   object-position: center;
+  border-radius: 20px;
 `;
 const Tags = styled.div`
   width: 100%;
