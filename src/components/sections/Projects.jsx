@@ -50,11 +50,15 @@ const Desc = styled.div`
 `;
 
 const CardContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 28px;
-  flex-wrap: wrap;
+  align-items: stretch;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
 `;
 
 const Projects = ({ openModal, setOpenModal }) => {
